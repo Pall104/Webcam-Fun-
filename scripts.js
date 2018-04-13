@@ -7,13 +7,13 @@ const snap = document.querySelector('.snap');
 function getVideo(){
     navigator.mediaDevices.getUserMedia({ video: true, audio:false})
         .then(localMediaStream => {
-            console.log(localMediaStream);
-            video.src = window.URL.createObjectURL(localMediaStream);
-            video.play();
-    })
-    .catch(err =>{
+        console.log(localMediaStream);
+    video.src = window.URL.createObjectURL(localMediaStream);
+    video.play();
+})
+.catch(err =>{
         console.error(`OH NO!!!`, err);
-    });
+});
 }
 
 function paintToCanvas(){
@@ -28,14 +28,14 @@ function paintToCanvas(){
     // mess with them
     // pixels = redEffect(pixels);
 
-   // pixels = rgbSplit(pixels);
+    // pixels = rgbSplit(pixels);
     // ctx.globalAlpha = 0.8;
 
-     pixels = greenScreen(pixels);
+    pixels = greenScreen(pixels);
     // put them back
     ctx.putImageData(pixels, 0, 0);
 
-    },16);
+},16);
 }
 
 function takePhoto(){
